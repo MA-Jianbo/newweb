@@ -1,0 +1,16 @@
+{
+  "name": "newweb-time-form",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dynamic Web form for Tama Art University structure design class",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
