@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あなたの今日どうでしたか</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="intro" aria-labelledby="page-title">
+        <p class="kicker">Dynamic Web Form</p>
+        <h1 id="page-title">あなたの今日どうでしたか</h1>
+        <p class="subtitle">同じ24時間でも、感じる長さは人それぞれ</p>
+        <p class="lead">今日を思い出しながら、朝・昼・夜の境界を動かして、あなたが感じた一日のかたちをつくってください</p>
+      </header>
+
+      <section class="studio" aria-label="時間のかたち">
+        <article class="time-block" aria-labelledby="real-title">
+          <div class="section-heading">
+            <h2 id="real-title">現実の時間</h2>
+            <p>一日 06:00 から翌 06:00 までを、朝・昼・夜に分けています</p>
+          </div>
+          <div class="timeline-scroll" id="realScroll">
+            <div class="timeline real-timeline" id="realTimeline" aria-label="現実の時間"></div>
+            <div class="ruler" id="realRuler" aria-hidden="true"></div>
+          </div>
+        </article>
+
+        <article class="time-block felt-block" aria-labelledby="felt-title">
+          <div class="section-heading">
+            <h2 id="felt-title">あなたが感じた時間</h2>
+            <p>境界線をドラッグして、長く感じた時間を広げてください</p>
+          </div>
+          <div class="timeline-scroll subjective-scroll" id="subjectiveScroll">
+            <div class="timeline subjective-timeline" id="subjectiveTimeline" aria-label="あなたが感じた時間"></div>
+            <div class="ruler" id="feltRuler" aria-hidden="true"></div>
+          </div>
+
+          <div class="day-scale-control">
+            <label for="dayScale">今日という一日は、どのくらい長く感じましたか？</label>
+            <div class="range-line">
+              <input id="dayScale" type="range" min="0.5" max="1.3" step="0.01" value="1">
+              <output id="dayScaleValue" for="dayScale">1.00倍</output>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="controls" aria-label="色の調整">
+        <article class="control-panel color-panel">
+          <div class="section-heading">
+            <h2>時間の色</h2>
+            <p>朝・昼・夜の記憶に近い色を選べます
+            </p>
+          </div>
+          <div class="color-grid" id="colorControls"></div>
+        </article>
+      </section>
+
+      <section class="actions" aria-label="保存とリセット">
+        <button class="primary-button" type="button" id="saveShape">今日のかたちを残す</button>
+        <button class="ghost-button" type="button" id="resetTime">時間をリセット</button>
+        <button class="ghost-button" type="button" id="resetAll">色も含めてリセット</button>
+      </section>
+
+      <section class="submission-info" aria-label="回答の送信について">
+        <p>回答は授業内の集計に使用します。氏名や連絡先など、個人を特定できる情報は収集しません。</p>
+        <label class="test-response-label" for="testSubmission">
+          <input type="checkbox" id="testSubmission">
+          <span>テスト回答として保存する（制作者向け）</span>
+        </label>
+        <p class="server-save-status" id="serverSaveStatus" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="result-section" id="resultSection" aria-labelledby="result-title" hidden>
+        <div class="result-card" id="resultCard">
+          <div class="result-head">
+            <div>
+              <p class="kicker">Result</p>
+              <h2 id="result-title">あなたの今日</h2>
+            </div>
+            <time id="resultDate"></time>
+          </div>
+          <p class="result-copy">これが、あなたの感じた今日の長さです</p>
+          <div class="timeline-scroll result-scroll">
+            <div class="timeline result-timeline" id="resultTimeline" aria-label="保存された時間のかたち"></div>
+            <div class="ruler" id="resultRuler" aria-hidden="true"></div>
+          </div>
+          <div class="result-meta" id="resultMeta"></div>
+          <p class="server-save-status result-server-save-status" id="resultServerSaveStatus" role="status" aria-live="polite"></p>
+        </div>
+        <div class="actions result-actions">
+          <button class="primary-button" type="button" id="exportPng">PNGを書き出す</button>
+          <button class="ghost-button" type="button" id="downloadJson">JSONを保存</button>
+          <button class="ghost-button" type="button" id="backToEdit">編集を続ける</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
